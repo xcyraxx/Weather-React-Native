@@ -4,9 +4,9 @@ import { ImageBackground, StyleSheet, Text, View } from 'react-native';
 import * as Location from 'expo-location'; 
 import DateTime from './components/DateTime'
 import WeatherScroll from './components/WeatherScroll';
+import { API_KEY as apiKey } from "@env";
 
 const woll = require('./assets/wallpaper.jpg')
-const API_KEY = '2757d34d3a7844b9e12912b8faecac24'
 export default function App() {
   const[data, setData] = useState({});
 
@@ -25,7 +25,7 @@ export default function App() {
 
   const fetchData = (latitude, longitude) => {
     if(latitude && longitude) {
-      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${API_KEY}`).then(res => res.json()).then(data => {
+      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&exclude=hourly,minutely&units=metric&appid=${apiKey}`).then(res => res.json()).then(data => {
 
       console.log(data)
       setData(data)
